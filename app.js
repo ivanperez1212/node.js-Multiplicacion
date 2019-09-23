@@ -1,11 +1,22 @@
-const {crearArchivo, listartabla} = require(`./Multiplicar/multiplicacion`)
+// este programa sirve para aprender a multiplicar
+const { crearArchivo, listartabla } = require(`./Multiplicar/multiplicacion`)
 const argumentos = require(`yargs`)
-    .command(`listar`,`Imprime en la terminar la tabla de multiplicar`,{
-        base:{
+    .command(`listar`, `Imprime en la terminar la tabla de multiplicar`, {
+        base: {
             demand: true,
             alias: 'b'
         },
-        limite:{
+        limite: {
+            alias: '1',
+            default: 10
+        }
+    })
+    .command(`crear`, `Imprime en la terminar la tabla de multiplicar`, {
+        base: {
+            demand: true,
+            alias: 'b'
+        },
+        limite: {
             alias: '1',
             default: 10
         }
@@ -17,11 +28,15 @@ let comandos = argumentos._[0];
 
 switch (comandos) {
     case `listar`:
-        listartabla(argumentos.base,argumentos.limite);
+        listartabla(argumentos.base, argumentos.limite);
+        break;
+
+    case `crear`:
+        crearArchivo(argumentos.base);
         break;
 
     default:
-        console/log(`No se Reconoce el comando ${comandos}`)
+        console / log(`No se Reconoce el comando ${comandos}`)
         break;
 }
 /*crearArchivo(base)
